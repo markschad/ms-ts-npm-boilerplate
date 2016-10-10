@@ -1,0 +1,32 @@
+{
+  "name": "ms-ts-npm-boilerplate",
+  "version": "1.0.0",
+  "description": "Mark Schad's TypeScript-NPM Boilerplate",
+  "main": "dist/index.js",
+  "typings": "dist/index",
+  "scripts": {
+    "postinstall": "typings install",
+    "prebuild": "rimraf dist",
+    "build": "tsc || exit 0",
+    "build:w": "tsc -w",
+    "pretest": "npm run build",
+    "test": "npm run tape",
+    "tape": "tape dist/**/*.spec.js",
+    "tape:w": "watch -p \"dist/**/*.js\" -c \"npm run -s tape\"",
+    "pretdd": "npm run build",
+    "tdd": "concurrently --raw \"npm run -s build:w\" \"npm run -s tape:w\""
+  },
+  "repository": "https://github.com/markschad/ms-ts-npm-boilerplate.git",
+  "keywords": [],
+  "author": "Mark Schad",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^3.0.0",
+    "rimraf": "^2.5.4",
+    "tape": "^4.6.0",
+    "typescript": "^2.0.3",
+    "typings": "^1.4.0",
+    "watch-cli": "^0.2.1"
+  },
+  "dependencies": {}
+}
